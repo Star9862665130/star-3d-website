@@ -54,11 +54,11 @@ export default function About() {
           </p>
           <div className="about-stats">
             <div>
-              <strong>500+</strong>
+              <strong>1,25,000+</strong>
               <span>Albums Crafted</span>
             </div>
             <div>
-              <strong>120+</strong>
+              <strong>7,500+</strong>
               <span>Partner Studios</span>
             </div>
             <div>
