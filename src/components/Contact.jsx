@@ -1,12 +1,17 @@
 import { useRef, useState } from 'react';
 import { useReveal } from '../lib/useReveal';
+import { SOCIALS } from '../lib/socials';
 import './Contact.css';
 
 const DETAILS = [
   { label: 'Email', value: 'stardigitalalbumagt@gmail.com', href: 'mailto:stardigitalalbumagt@gmail.com' },
   { label: 'Phone', value: '+91 98626 65130', href: 'tel:+919862665130' },
   { label: 'Website', value: 'stardigitalalbum.com', href: 'https://stardigitalalbum.com' },
-  { label: 'Studio', value: 'Agartala, Tripura, India', href: null },
+  {
+    label: 'Studio',
+    value: 'Post Office Chowmuhani, Mantri Bari Road, Agartala, Tripura 799001',
+    href: null,
+  },
 ];
 
 export default function Contact() {
@@ -44,6 +49,21 @@ export default function Contact() {
               </li>
             ))}
           </ul>
+
+          <div className="contact-socials">
+            {SOCIALS.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                className="contact-social-link"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
 
         <form className="contact-form" data-reveal="right" onSubmit={handleSubmit}>

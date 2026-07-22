@@ -1,3 +1,4 @@
+import { SOCIALS } from '../lib/socials';
 import './Footer.css';
 
 export default function Footer() {
@@ -23,8 +24,15 @@ export default function Footer() {
         </nav>
 
         <div className="footer-meta">
-          <span>Agartala, Tripura, India</span>
+          <span>Post Office Chowmuhani, Mantri Bari Road, Agartala, Tripura 799001</span>
           <span>stardigitalalbumagt@gmail.com &bull; +91 98626 65130</span>
+          <div className="footer-socials">
+            {SOCIALS.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}>
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
       <div className="footer-bottom">

@@ -135,6 +135,35 @@
   font-size: 0.85rem;
 }
 
+.contact-socials {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+.contact-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--gold);
+  transition: border-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-social-link:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+  transform: translateY(-3px);
+}
+
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;
@@ -148,6 +177,10 @@
   .contact-copy {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .contact-socials {
+    justify-content: center;
   }
 }
 
