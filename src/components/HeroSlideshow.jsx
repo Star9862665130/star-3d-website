@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './SiteBackground.css';
+import './HeroSlideshow.css';
 
 const webmModules = import.meta.glob('../assets/hero-videos/*.webm', { eager: true, import: 'default' });
 const mp4Modules = import.meta.glob('../assets/hero-videos/*.mp4', { eager: true, import: 'default' });
@@ -11,7 +11,7 @@ const videos = Object.keys(webmModules)
     return { webm: webmModules[path], mp4: mp4Modules[`${base}.mp4`] };
   });
 
-export default function SiteBackground() {
+export default function HeroSlideshow() {
   const [index, setIndex] = useState(0);
   const videoRefs = useRef([]);
 
@@ -33,13 +33,15 @@ export default function SiteBackground() {
     };
   }, [index]);
 
+  if (!videos.length) return null;
+
   return (
-    <div className="site-bg" aria-hidden="true">
+    <div className="hero-slideshow" aria-hidden="true">
       {videos.map((v, i) => (
         <video
           key={v.webm}
           ref={(el) => (videoRefs.current[i] = el)}
-          className={`site-bg-slide ${i === index ? 'is-active' : ''}`}
+          className={`hero-slide ${i === index ? 'is-active' : ''}`}
           muted
           playsInline
           preload={i === 0 ? 'auto' : 'metadata'}
@@ -48,16 +50,6 @@ export default function SiteBackground() {
           <source src={v.mp4} type="video/mp4" />
         </video>
       ))}
-
-      <div className="site-bg-veil" />
-
-      {/* Covers the AI-generation watermark baked into the bottom-right
-          corner of every clip — fixed here (not inside Hero) so it stays
-          anchored over the logo regardless of scroll position. */}
-      <div className="site-bg-badge">
-        <span className="site-bg-badge-mark">&#9733;</span>
-        <span>Star Digital Album</span>
-      </div>
     </div>
   );
 }

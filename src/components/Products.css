@@ -1,6 +1,5 @@
 .products {
-  background: rgba(18, 16, 9, 0.88);
-  backdrop-filter: blur(3px);
+  background: var(--bg-alt);
 }
 
 .product-grid {
