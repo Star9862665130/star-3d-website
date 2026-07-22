@@ -1,7 +1,7 @@
 export const SOCIALS = [
   {
     label: 'Facebook',
-    href: 'https://www.facebook.com/stardigitalalbum',
+    href: 'https://www.facebook.com/p/Star-Digital-Album-100083303710845/',
     icon: (
       <svg viewBox="0 0 24 24" fill="none">
         <path
@@ -46,7 +46,7 @@ export const SOCIALS = [
   },
   {
     label: 'YouTube',
-    href: 'https://www.youtube.com/@stardigitalalbum',
+    href: 'https://www.youtube.com/@stardigitalalbum5096',
     icon: (
       <svg viewBox="0 0 24 24" fill="none">
         <rect x="2.5" y="6" width="19" height="12" rx="3" stroke="currentColor" strokeWidth="1.4" />
