@@ -67,6 +67,11 @@ export default function Hero({ onExplore }) {
         <span className="hero-scroll-line" />
         <span>Scroll</span>
       </button>
+
+      <div className="hero-brand-badge" aria-hidden="true">
+        <span className="hero-brand-badge-mark">&#9733;</span>
+        <span>Star Digital Album</span>
+      </div>
     </section>
   );
 }
