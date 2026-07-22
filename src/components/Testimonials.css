@@ -1,0 +1,92 @@
+.testimonials {
+  background: var(--bg-alt);
+}
+
+.testimonial-carousel {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.testimonial-slide {
+  flex: 0 0 100%;
+  perspective: 1200px;
+  padding: 0.5rem;
+}
+
+.testimonial-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: clamp(2.2rem, 5vw, 3.6rem);
+  background: linear-gradient(165deg, rgba(212, 175, 106, 0.06), transparent 60%);
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.testimonial-card:hover {
+  box-shadow: var(--shadow-gold);
+}
+
+.testimonial-quote-mark {
+  font-family: var(--display);
+  font-size: 3.5rem;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.testimonial-text {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--cream);
+  margin-bottom: 1.8rem;
+}
+
+.testimonial-person {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.testimonial-name {
+  font-family: var(--display);
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+.testimonial-role {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.testimonial-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-deep);
+  background: transparent;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.testimonial-dots button.is-active {
+  background: var(--gold);
+  transform: scale(1.3);
+}
