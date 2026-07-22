@@ -53,13 +53,25 @@ const PRODUCTS = [
   },
 ];
 
-const GALLERY = Object.values(
+// Images whose subjects are taller than the card's aspect ratio — cropping
+// them to fill the card would cut off the logo/photo, so they're shown
+// letterboxed (object-fit: contain) instead of cropped (object-fit: cover).
+const PORTRAIT_FILES = ['gallery-01.jpg', 'gallery-02.jpg', 'gallery-03.jpg', 'gallery-11.jpg'];
+
+const GALLERY = Object.entries(
   import.meta.glob('../assets/gallery/*.jpg', { eager: true, import: 'default' })
-).sort();
+)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([path, image]) => ({
+    title: null,
+    desc: null,
+    image,
+    portrait: PORTRAIT_FILES.some((f) => path.endsWith(f)),
+  }));
 
 const ITEMS = [
-  ...PRODUCTS,
-  ...GALLERY.map((image) => ({ title: null, desc: null, image })),
+  ...PRODUCTS.map((p) => ({ ...p, portrait: false })),
+  ...GALLERY,
 ];
 
 export default function Products() {
@@ -86,7 +98,7 @@ export default function Products() {
               data-reveal-delay={(i % 4) * 0.08}
               key={item.image}
             >
-              <div className="product-media">
+              <div className={`product-media ${item.portrait ? 'is-portrait' : ''}`}>
                 <img src={item.image} alt={item.title || 'Star Digital Album design'} loading="lazy" />
                 {item.title && (
                   <figcaption>
