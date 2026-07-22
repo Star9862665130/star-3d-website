@@ -6,12 +6,14 @@ import goldBox from '../assets/products/gold-box.jpg';
 import premiumBox from '../assets/products/premium-box.jpg';
 import flipBox from '../assets/products/flip-box.jpg';
 import leatherCombo from '../assets/products/leather-combo.jpg';
+import laserBox from '../assets/products/laser-box.jpg';
+import storyFrameBox from '../assets/products/story-frame-box.jpg';
 import './Products.css';
 
 const PRODUCTS = [
   {
     title: 'Calendar Combo',
-    desc: 'A folding briefcase-style keepsake with a calendar spread and a framed portrait window on the cover.',
+    desc: 'A folding briefcase-style keepsake pairing a desk calendar with a framed portrait window on the cover.',
     image: calendarCombo,
   },
   {
@@ -39,7 +41,21 @@ const PRODUCTS = [
     desc: 'A matching leather tote and photo folder set, each carrying a stitched portrait window of your own.',
     image: leatherCombo,
   },
+  {
+    title: 'Laser-Cut Frame Box',
+    desc: 'An ornate laser-cut lattice box with a warm LED-lit backdrop, framing your portrait in intricate detail.',
+    image: laserBox,
+  },
+  {
+    title: 'Story Frame Box',
+    desc: 'A portrait keepsake box with a personalised nameplate &mdash; a graceful accent for a shelf or bedside table.',
+    image: storyFrameBox,
+  },
 ];
+
+const GALLERY = Object.values(
+  import.meta.glob('../assets/gallery/*.jpg', { eager: true, import: 'default' })
+).sort();
 
 export default function Products() {
   const ref = useRef(null);
@@ -65,11 +81,24 @@ export default function Products() {
               </div>
               <figcaption>
                 <h3>{p.title}</h3>
-                <p>{p.desc}</p>
+                <p dangerouslySetInnerHTML={{ __html: p.desc }} />
               </figcaption>
             </figure>
           ))}
         </div>
+
+        {GALLERY.length > 0 && (
+          <div className="product-gallery" data-reveal="up" data-reveal-delay={0.1}>
+            <h3 className="product-gallery-title">More Designs From Our Studio</h3>
+            <div className="product-gallery-track">
+              {GALLERY.map((src) => (
+                <div className="product-gallery-item" key={src}>
+                  <img src={src} alt="Star Digital Album design preview" loading="lazy" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
