@@ -19,8 +19,8 @@ function App() {
       <Nav />
       <main>
         <Hero onExplore={scrollToPortfolio} />
-        <Portfolio />
         <Products />
+        <Portfolio />
         <Services />
         <About />
         <Testimonials />

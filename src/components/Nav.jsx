@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import './Nav.css';
 
 const LINKS = [
-  { href: '#portfolio', label: 'Portfolio' },
   { href: '#products', label: 'Products' },
+  { href: '#portfolio', label: 'Portfolio' },
   { href: '#services', label: 'Services' },
   { href: '#about', label: 'Process' },
   { href: '#testimonials', label: 'Stories' },
