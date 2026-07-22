@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Portfolio from './components/Portfolio';
+import Products from './components/Products';
 import Services from './components/Services';
 import About from './components/About';
 import Testimonials from './components/Testimonials';
@@ -19,6 +20,7 @@ function App() {
       <main>
         <Hero onExplore={scrollToPortfolio} />
         <Portfolio />
+        <Products />
         <Services />
         <About />
         <Testimonials />

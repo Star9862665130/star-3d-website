@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import HeroScene from '../three/HeroScene';
+import HeroSlideshow from './HeroSlideshow';
 import { gsap } from '../lib/gsapSetup';
 import './Hero.css';
 
@@ -26,11 +27,13 @@ export default function Hero({ onExplore }) {
 
   return (
     <section className="hero" ref={rootRef} id="home">
+      <HeroSlideshow />
+
       <div className="hero-canvas">
         <Canvas
           dpr={[1, isTouch ? 1.3 : 2]}
           camera={{ position: [0, 0, 6], fov: 45 }}
-          gl={{ antialias: true, alpha: false }}
+          gl={{ antialias: true, alpha: true }}
         >
           <Suspense fallback={null}>
             <HeroScene isTouch={isTouch} />
