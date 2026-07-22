@@ -57,6 +57,11 @@ const GALLERY = Object.values(
   import.meta.glob('../assets/gallery/*.jpg', { eager: true, import: 'default' })
 ).sort();
 
+const ITEMS = [
+  ...PRODUCTS,
+  ...GALLERY.map((image) => ({ title: null, desc: null, image })),
+];
+
 export default function Products() {
   const ref = useRef(null);
   useReveal(ref, []);
@@ -74,31 +79,25 @@ export default function Products() {
         </div>
 
         <div className="product-grid">
-          {PRODUCTS.map((p, i) => (
-            <figure className="product-card" data-reveal="up" data-reveal-delay={(i % 3) * 0.1} key={p.title}>
+          {ITEMS.map((item, i) => (
+            <figure
+              className="product-card"
+              data-reveal="up"
+              data-reveal-delay={(i % 4) * 0.08}
+              key={item.image}
+            >
               <div className="product-media">
-                <img src={p.image} alt={p.title} loading="lazy" />
+                <img src={item.image} alt={item.title || 'Star Digital Album design'} loading="lazy" />
+                {item.title && (
+                  <figcaption>
+                    <h3>{item.title}</h3>
+                    <p dangerouslySetInnerHTML={{ __html: item.desc }} />
+                  </figcaption>
+                )}
               </div>
-              <figcaption>
-                <h3>{p.title}</h3>
-                <p dangerouslySetInnerHTML={{ __html: p.desc }} />
-              </figcaption>
             </figure>
           ))}
         </div>
-
-        {GALLERY.length > 0 && (
-          <div className="product-gallery" data-reveal="up" data-reveal-delay={0.1}>
-            <h3 className="product-gallery-title">More Designs From Our Studio</h3>
-            <div className="product-gallery-track">
-              {GALLERY.map((src) => (
-                <div className="product-gallery-item" key={src}>
-                  <img src={src} alt="Star Digital Album design preview" loading="lazy" />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
