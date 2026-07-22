@@ -1,0 +1,66 @@
+.cover-styles {
+  background: var(--bg);
+}
+
+.cover-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.6rem, 3vw, 2.6rem);
+}
+
+.cover-card {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-elev);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cover-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 106, 0.5);
+  box-shadow: var(--shadow-gold);
+}
+
+.cover-media {
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+}
+
+.cover-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.cover-card:hover .cover-media img {
+  transform: scale(1.05);
+}
+
+.cover-card figcaption {
+  padding: 1.8rem 2rem 2.2rem;
+  text-align: left;
+}
+
+.cover-card h3 {
+  margin-bottom: 0.6rem;
+  font-size: 1.4rem;
+}
+
+.cover-card p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  max-width: 46ch;
+}
+
+@media (max-width: 900px) {
+  .cover-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cover-card figcaption {
+    padding: 1.5rem 1.6rem 1.8rem;
+  }
+}
