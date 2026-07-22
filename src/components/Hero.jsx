@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import HeroScene from '../three/HeroScene';
+import HeroSlideshow from './HeroSlideshow';
 import { gsap } from '../lib/gsapSetup';
 import './Hero.css';
 
@@ -26,6 +27,8 @@ export default function Hero({ onExplore }) {
 
   return (
     <section className="hero" ref={rootRef} id="home">
+      <HeroSlideshow />
+
       <div className="hero-canvas">
         <Canvas
           dpr={[1, isTouch ? 1.3 : 2]}
@@ -64,6 +67,11 @@ export default function Hero({ onExplore }) {
         <span className="hero-scroll-line" />
         <span>Scroll</span>
       </button>
+
+      <div className="hero-brand-badge" aria-hidden="true">
+        <span className="hero-brand-badge-mark">&#9733;</span>
+        <span>Star Digital Album</span>
+      </div>
     </section>
   );
 }
