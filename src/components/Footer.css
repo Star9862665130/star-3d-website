@@ -58,6 +58,36 @@
   font-size: 0.78rem;
   color: var(--text-faint);
   text-align: right;
+  max-width: 340px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.6rem;
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--gold);
+  transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials a svg {
+  width: 15px;
+  height: 15px;
+}
+
+.footer-socials a:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+  transform: translateY(-2px);
 }
 
 .footer-bottom {
@@ -80,5 +110,10 @@
   .footer-meta {
     align-items: center;
     text-align: center;
+    max-width: none;
+  }
+
+  .footer-socials {
+    justify-content: center;
   }
 }
