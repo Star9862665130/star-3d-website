@@ -10,12 +10,15 @@ export default function Portfolio() {
   useReveal(ref, []);
 
   useEffect(() => {
-    // Browsers block audio autoplay until the visitor has interacted with
-    // the page. Rather than requiring them to tap the flipbook itself, start
-    // its background music on the very first click/tap/keypress anywhere on
-    // the site. Keeps retrying (in case the iframe hasn't finished loading
-    // yet) until the call actually succeeds, then stops listening.
-    const events = ['click', 'touchstart', 'keydown'];
+    // Browsers block audible autoplay until the visitor interacts with the
+    // page — no website can play sound before that (it's a universal
+    // browser policy, not something under our control). The flipbook itself
+    // already starts its music muted the instant it loads; this listens for
+    // the visitor's very first interaction anywhere on the site — a click,
+    // tap, keypress, or scroll — and tells it to unmute, which is the
+    // earliest any browser allows audible sound to begin. Keeps retrying
+    // (in case the iframe hasn't finished loading yet) until it succeeds.
+    const events = ['click', 'touchstart', 'keydown', 'scroll', 'wheel', 'pointerdown'];
     const tryStartMusic = () => {
       const win = iframeRef.current?.contentWindow;
       if (win && typeof win.startFlipbookMusic === 'function') {
@@ -27,7 +30,7 @@ export default function Portfolio() {
         events.forEach((evt) => document.removeEventListener(evt, tryStartMusic));
       }
     };
-    events.forEach((evt) => document.addEventListener(evt, tryStartMusic));
+    events.forEach((evt) => document.addEventListener(evt, tryStartMusic, { passive: true }));
     return () => events.forEach((evt) => document.removeEventListener(evt, tryStartMusic));
   }, []);
 
