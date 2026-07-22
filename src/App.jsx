@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Portfolio from './components/Portfolio';
 import Products from './components/Products';
+import CoverStyles from './components/CoverStyles';
 import Services from './components/Services';
 import WhyChooseUs from './components/WhyChooseUs';
 import About from './components/About';
@@ -21,6 +22,7 @@ function App() {
       <main>
         <Hero onExplore={scrollToPortfolio} />
         <Products />
+        <CoverStyles />
         <Portfolio />
         <Services />
         <WhyChooseUs />
