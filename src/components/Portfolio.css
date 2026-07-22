@@ -1,5 +1,6 @@
 .portfolio {
-  background: var(--bg);
+  background: rgba(11, 10, 8, 0.86);
+  backdrop-filter: blur(3px);
 }
 
 .flipbook-showcase {

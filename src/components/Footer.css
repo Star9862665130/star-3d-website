@@ -1,5 +1,6 @@
 .footer {
-  background: #080705;
+  background: rgba(8, 7, 5, 0.92);
+  backdrop-filter: blur(3px);
   border-top: 1px solid var(--line);
   padding: 3.5rem clamp(1.5rem, 6vw, 6rem) 1.6rem;
 }

@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import SiteBackground from './components/SiteBackground';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Portfolio from './components/Portfolio';
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+      <SiteBackground />
       <Nav />
       <main>
         <Hero onExplore={scrollToPortfolio} />
