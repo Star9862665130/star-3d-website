@@ -16,10 +16,19 @@ export default function Portfolio() {
     // already starts its music muted the instant it loads; this listens for
     // the visitor's very first interaction anywhere on the site — a click,
     // tap, keypress, or scroll — and tells it to unmute, which is the
-    // earliest any browser allows audible sound to begin. Keeps retrying
-    // (in case the iframe hasn't finished loading yet) until it succeeds.
+    // earliest any browser allows audible sound to begin.
+    //
+    // Calling win.startFlipbookMusic() can fail *silently* and
+    // asynchronously (e.g. the browser doesn't honor a gesture relayed
+    // across the iframe boundary) — it won't throw, it just quietly never
+    // starts playing. So "the call didn't crash" is not proof it worked:
+    // keep retrying on every subsequent interaction until playback is
+    // actually confirmed via isFlipbookMusicPlaying().
     const events = ['click', 'touchstart', 'keydown', 'scroll', 'wheel', 'pointerdown'];
+    let confirmed = false;
+    const stopListening = () => events.forEach((evt) => document.removeEventListener(evt, tryStartMusic));
     const tryStartMusic = () => {
+      if (confirmed) return;
       const win = iframeRef.current?.contentWindow;
       if (win && typeof win.startFlipbookMusic === 'function') {
         try {
@@ -27,11 +36,16 @@ export default function Portfolio() {
         } catch {
           // cross-origin or otherwise inaccessible — nothing more to do
         }
-        events.forEach((evt) => document.removeEventListener(evt, tryStartMusic));
+        setTimeout(() => {
+          if (typeof win.isFlipbookMusicPlaying === 'function' && win.isFlipbookMusicPlaying()) {
+            confirmed = true;
+            stopListening();
+          }
+        }, 300);
       }
     };
     events.forEach((evt) => document.addEventListener(evt, tryStartMusic, { passive: true }));
-    return () => events.forEach((evt) => document.removeEventListener(evt, tryStartMusic));
+    return stopListening;
   }, []);
 
   return (
