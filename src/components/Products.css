@@ -41,6 +41,21 @@
   transform: scale(1.06);
 }
 
+/* Portrait-oriented source photos: cropping to fill a 4/3 tile would cut
+   off the logo/subject, so show the full image letterboxed instead. */
+.product-media.is-portrait {
+  background: #14110a;
+}
+
+.product-media.is-portrait img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.product-card:hover .product-media.is-portrait img {
+  transform: scale(1.02);
+}
+
 .product-media figcaption {
   position: absolute;
   inset: auto 0 0 0;
