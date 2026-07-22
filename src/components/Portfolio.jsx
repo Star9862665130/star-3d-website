@@ -52,6 +52,7 @@ export default function Portfolio() {
               ref={iframeRef}
               src={FLIPBOOK_SRC}
               title="Ankit & Jasmine wedding album flipbook"
+              allow="autoplay"
             />
           </div>
           <div className="flipbook-meta">
