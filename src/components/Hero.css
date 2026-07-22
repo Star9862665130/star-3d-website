@@ -119,6 +119,28 @@
   }
 }
 
+.hero-brand-badge {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.6rem 2.2rem 1.6rem 3rem;
+  background: radial-gradient(ellipse at bottom right, rgba(11, 10, 8, 0.98) 0%, rgba(11, 10, 8, 0.98) 55%, rgba(11, 10, 8, 0) 100%);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  pointer-events: none;
+}
+
+.hero-brand-badge-mark {
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+
 @media (max-width: 640px) {
   .hero-cta {
     flex-direction: column;
@@ -127,5 +149,13 @@
 
   .hero-cta .btn {
     width: 100%;
+  }
+
+  .hero-brand-badge span:last-child {
+    display: none;
+  }
+
+  .hero-brand-badge {
+    padding: 0.5rem;
   }
 }
