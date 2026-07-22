@@ -111,8 +111,7 @@ export default function HeroScene({ isTouch }) {
 
   return (
     <>
-      <color attach="background" args={['#0b0a08']} />
-      <fog attach="fog" args={['#0b0a08', 6, 16]} />
+      <fog attach="fog" args={['#0b0a08', 7, 15]} />
       <ambientLight intensity={0.55} />
       <pointLight position={[4, 4, 4]} intensity={40} color={GOLD} />
       <pointLight position={[-4, -2, 2]} intensity={18} color={CREAM} />

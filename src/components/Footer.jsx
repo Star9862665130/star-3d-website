@@ -15,6 +15,7 @@ export default function Footer() {
 
         <nav className="footer-links">
           <a href="#portfolio">Portfolio</a>
+          <a href="#products">Products</a>
           <a href="#services">Services</a>
           <a href="#about">Process</a>
           <a href="#testimonials">Stories</a>
