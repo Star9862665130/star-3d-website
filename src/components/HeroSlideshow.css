@@ -14,12 +14,10 @@
   object-fit: cover;
   object-position: center;
   opacity: 0;
-  transform: scale(1.04);
   filter: saturate(0.85) brightness(0.7);
-  transition: opacity 2.2s ease, transform 6s ease;
+  transition: opacity 1.8s ease;
 }
 
 .hero-slide.is-active {
   opacity: 1;
-  transform: scale(1.1);
 }
